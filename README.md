@@ -2,43 +2,47 @@
 
 ## I.	 INTRODUÇÃO ##
 Esse projeto tem como objetivo exemplificar a aplicação do algorítimo de Redes Neurais Arificiais (RNA), também chamado 
-de ANN (Artificial Neural Network) utilizado para aprendizado de máquina, na qual pode ser aplicado para problemas de regressão
-e classificação.<br>
+de ANN (Artificial Neural Network) utilizado para aprendizado de máquina.<br>
 O modelo de neuronio proposto por esse projeto é o Perceptron com apenas uma camada e a função de ativação é a degrau.
 
 ## II.	FUNDAMENTAÇÃO TEÓRICA ##
 
-### A.	MÉTODO DOS MÍNIMOS QUADRADOS ###
-O Método dos Mínimos Quadrados é um dos métodos utilizado para tratamento estatístico de dados experimentais (frequentemente
-utilizado em Física e outras ciências), utilizado para obter estimativas com base em dados.[1]<br>
-A base matemática contextualizada a seguir foi retirada de [2], mais detalhes podem ser analisado utilizando [1] ou [2].<br>
-A ideia básica é aproximar o sistema de equações a funções de reta, tomando com base um vetor de entrada X, como:
+### A.	REDES NEURAIS ARTIFICIAIS ###
+Tambem conhecido como Artificial Neural Network (ANN) ou modelos conexionistas, o RNA foi proposto em 1943 por McCulloch e Pitts.<br>
+A idéia central das redes neurais veio da inspiração do funcionamento dos neuronios biológicos na qual os pesquisadores
+acreditavam que modelos computacionais baseados na Máquina de Turing tinham limitações que os modelos computacionais baseados
+no comportamento cerebral não tinham, tais como a capacidade de processamento de informação paralela e massiva.<br>
+A primeira implementação do algoritimo foi feita desenvolvendo uma máquina, que ficou conhecida como Mark I Perceptron.
+Projetada para reconhecimento de imagem na qual utilizava-se de fotocélulas conectadas aos 'neuronios' que tinham seus 
+pesos atribuidos a partir do potenciometros controlados por motores. [1] [2]<br>
 
-![Alt text](images/lms-eq1.png?)
+![Alt text](images/ann-mark.png?)
 
-Se a uma função de reta é dado por "Y = ax + b", na qual temos o termo independente e o termo que multiplica a variável,
-podemos transpor isso a um vetor de "p" estados, da seguinte maneira:
+Os problemas solucionados pelo Perseptron são de natureza simples e devem ser separáveis linearmente, ou seja, dado o conjunto
+de dados analisados pelas classes, para que exista uma solução utilizando Perseptron deve existir uma reta capaz de separar
+os conjuntos analisados.<br>
+Segundo [1] devemos utilizar RNAs quando: a entrada dos seus dados for vetorial, multidimensional, com valores discretos 
+ou reais; e a saída for vetorial, multidimensional, valores discretos ou reais.
+Pensando em como um neurônio biológico funciona, temos a frase a seguir retirada de [2] que expressa o funcionamento de
+maneira direta. Um neurônio recebe um impulso através dos dendritos, processa o sinal e dispara um segundo impulso, que
+produz uma substância neurotransmissora que flui do corpo celular para o axônio, e então para outro neurônio.
+Analisando a frase de maneira computacional temos que:
 
-![Alt text](images/lms-eq2.png?)
+![Alt text](images/ann-image-01.png?)
 
-Beta0 é o termo independente da função, também conhecido em Machine Learning como BIAS e cada outro termo do vetor Beta,
-ou seja, Beta1 ... BetaP refere-se a como a variável se relaciona a função Y de estudo. Podendo ser de três maneiras:
+* Dado um conjunto de entradas {x0, ... , xn} ponderados por {w0, ... , wn} conectados a uma função de agregadora temos uma
+saída expressa pela função de ativação do neuronio.
 
-<b>Relação positiva e Linear:</b><br>
- ![Alt text](images/lms-graph-01.png?)<br>
+O aprendizado da rede dar-se por saber quais são os pesos corretos atribuidos ao conjunto de dados que tem o menor erro
+possível.
+O algoritimo de treinamento simplificado é:
+* Iniciar os pesos 'w' com valores entre 0 e 1;
+* Especificar a taxa de aprendizagem 'η'
+* Iniciar o contador de número de épocas (época = 0)
+* Apresentar as amostras dentro das épocas
+* Atualizar os pesos da rede para minimizar o erro utilizando a seguinte função:
 
-<b>Relação negativa e Linear:</b> <br>
- ![Alt text](images/lms-graph-02.png?)<br>
- 
- <b>Sem Relacionamento:</b><br>
- ![Alt text](images/lms-graph-03.png?)<br>
- 
-Na qual Beta é obtido calculando o mínimo erro quadrático, dada pela função:
-![Alt text](images/lms-eq3.png?)
-
-Ao fim podemos inferir que o vetor de Beta pode ser calculado da seguinte maneira:
-
-![Alt text](images/lms-eq4.png?)
+![Alt text](images/ann-func-01.png?)
 
 ## III.	METODOLOGIA ##
 Para o projeto vigente foi utilizado python juntamente com o Notebook Jupyter para prototipar o modelo do
@@ -54,17 +58,32 @@ Para o teste e análise do algorítimo foram propostos alguns exemplos, tais com
 Os detalhes das implementações dos problemas propostos na metodologia pode ser analisados em <b>"./ANN-Perceptron.ipynb"</b> 
 ou <b>"ANN-Perceptron.html"</b>.<br>
 
-Para a primeira proposta temos:
+Para a primeira proposta (Porta AND) temos:
 
-![Alt text](images/alpswater-dataset.png?)
+![Alt text](images/ann-p-example01.png?)
+
+Para a segunda proposta (Porta OR) temos:
+
+![Alt text](images/ann-p-example02.png?)
+
+Para a terceira proposta (Porta XOR) temos:
+
+![Alt text](images/ann-p-example03.png?)
+
+Para a quarta proposta, diferenciar a classe "setosa" da "versicolor" foi desenhada a seguinte rede:
+
+![Alt text](images/ann-p-iris_rede.png?)
+
+Tal rede segue a seguinte tabela da verdade:
+
+![Alt text](images/ann-p-iris_tabela.png?)
 
 ## V. CONCLUSÃO ##
-Dado os resultados vistos em IV podemos inferir que o Método dos Mínimos Quadrados chegou ao resultado esperado e
-graficamente é possível inferir que o erro de aproximação é relativamente baixo.<br>
-Um dos objetivos do projeto em curso é implementar o algorítimo do MMQ. Se analisarmos os dados chegamos a conclusão de 
-que o algorítimo foi implementado corretamente, porém não é possível fazer inferências relativas aos problemas abordados 
-anteriormente devido a não implementação de funções que calculem o erro, erro médio quadrático, implementação do Teste F,
-Teste T e outras abordagens estatísticas que validem a solução de regressão proposta anteriormente.
+Dado os resultados vistos em IV podemos inferir que o Perseptron é funcional para dados linearmente divisíveis (asssim
+como abordados em II), porém para aplicações com dados não linearmente divisiveis, tais como a terceira proposta utilizando
+a tabela da verdade da porta XOR, não foi obtido resultado satisfatório.<br>
+Um dos objetivos do projeto em curso é a implementação do algorítimo do Perseptron. Se analisarmos os dados chegamos a
+conclusão de que o algorítimo foi implementado corretamente.
 
 ## VI. AGRADECIMENTOS ##
 
@@ -75,5 +94,5 @@ apoiaram em meio a dificuldades.
 
 ## VII. REFERÊNCIAS ##
 
-[1]	O. A. M. Helene, Método dos mínimos quadrados com formalismo matricial: guia do usuário, Editora: Livraria da Física, São Paulo, 2016<br>
-[2]	R. Bianchi, Tópicos Especiais em Aprendizagem, 2019, ppt slide Centro Universitário FEI.
+[1]	R. Bianchi, Tópicos Especiais em Aprendizagem, 2019, ppt slide Centro Universitário FEI.
+[2] Vinicius, PERCEPTRON – REDES NEURAIS, 06/2017, link: https://www.monolitonimbus.com.br/perceptron-redes-neurais/, acessado em 11/2019
