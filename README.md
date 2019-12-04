@@ -78,6 +78,10 @@ Tal rede segue a seguinte tabela da verdade:
 
 ![Alt text](images/ann-p-iris_tabela.png?)
 
+Parte do resultado pode ser vista a seguir (ou em "ANN-Perceptron.html" em mais detalhes):
+
+![Alt text](images/ann-p-example04.png?)
+
 ## V. CONCLUSÃO ##
 Dado os resultados vistos em IV podemos inferir que o Perseptron é funcional para dados linearmente divisíveis (asssim
 como abordados em II), porém para aplicações com dados não linearmente divisiveis, tais como a terceira proposta utilizando
@@ -94,5 +98,6 @@ apoiaram em meio a dificuldades.
 
 ## VII. REFERÊNCIAS ##
 
-[1]	R. Bianchi, Tópicos Especiais em Aprendizagem, 2019, ppt slide Centro Universitário FEI.
-[2] Vinicius, PERCEPTRON – REDES NEURAIS, 06/2017, link: https://www.monolitonimbus.com.br/perceptron-redes-neurais/, acessado em 11/2019
+[1]	R. Bianchi, Tópicos Especiais em Aprendizagem, 2019, ppt slide Centro Universitário FEI.<br>
+[2] Vinicius, PERCEPTRON – REDES NEURAIS, 06/2017, link: https://www.monolitonimbus.com.br/perceptron-redes-neurais/, acessado em 11/2019<br>
+[3] T. Countz, 19-line Line-by-line Python Perceptron: Learning Machine Learning Journal #4, link: https://medium.com/@thomascountz/19-line-line-by-line-python-perceptron-b6f113b161f3, acessado em 11/2019<br>
